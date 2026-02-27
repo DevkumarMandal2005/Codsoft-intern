@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magnum • Scientific Calculator</title>
+    <meta name="description" content="A premium scientific calculator with step-by-step solutions and minimalist modes.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.8.0/math.js"></script>
+</head>
+<body class="theme-dark">
+    <div class="glass-container">
+        <header>
+            <div class="logo">MAGNUM<span>.CALC</span></div>
+            <div class="mode-selector">
+                <button id="mode-standard" class="active" title="Scientific Mode">Standard</button>
+                <button id="mode-step" title="Step-by-Step Mode">Explainer</button>
+                <button id="mode-minimal" title="Minimalist Mode">Minimal</button>
+            </div>
+        </header>
+
+        <main id="calculator-app">
+            <div class="display-area">
+                <div id="formula-display" class="formula-line"></div>
+                <div id="main-display" class="result-line">0</div>
+                <div id="step-panel" class="step-panel hidden">
+                    <h3>Solution Walkthrough</h3>
+                    <div id="steps-content"></div>
+                </div>
+            </div>
+
+            <div class="controls-grid" id="controls">
+                <!-- Row 1: Scientific Functions -->
+                <button class="btn btn-sci" data-val="sin(">sin</button>
+                <button class="btn btn-sci" data-val="cos(">cos</button>
+                <button class="btn btn-sci" data-val="tan(">tan</button>
+                <button class="btn btn-sci" data-val="log(">log</button>
+                <button class="btn btn-sci" data-val="ln(">ln</button>
+
+                <!-- Row 2 -->
+                <button class="btn btn-sci" data-val="derivative(">d/dx</button>
+                <button class="btn btn-sci" data-val="^">xʸ</button>
+                <button class="btn btn-sci" data-val="sqrt(">√</button>
+                <button class="btn btn-sci" data-val="pi">π</button>
+                <button class="btn btn-sci" data-val="e">e</button>
+
+                <!-- Row 3: Standard Numbers/Ops -->
+                <button class="btn btn-action" id="clear">AC</button>
+                <button class="btn btn-action" id="backspace">⌫</button>
+                <button class="btn btn-op" data-val="%">%</button>
+                <button class="btn btn-op drawer-only" data-val="/">÷</button>
+
+                <!-- Numeric Pad -->
+                <button class="btn btn-num" data-val="7">7</button>
+                <button class="btn btn-num" data-val="8">8</button>
+                <button class="btn btn-num" data-val="9">9</button>
+                <button class="btn btn-op" data-val="*">×</button>
+
+                <button class="btn btn-num" data-val="4">4</button>
+                <button class="btn btn-num" data-val="5">5</button>
+                <button class="btn btn-num" data-val="6">6</button>
+                <button class="btn btn-op" data-val="-">−</button>
+
+                <button class="btn btn-num" data-val="1">1</button>
+                <button class="btn btn-num" data-val="2">2</button>
+                <button class="btn btn-num" data-val="3">3</button>
+                <button class="btn btn-op" data-val="+">+</button>
+
+                <button class="btn btn-num" data-val="0">0</button>
+                <button class="btn btn-num" data-val=".">.</button>
+                <button class="btn btn-num" data-val="(">(</button>
+                <button class="btn btn-num" data-val=")">)</button>
+                
+                <button class="btn btn-equal" id="equals" colspan="2">=</button>
+            </div>
+        </main>
+
+        <footer>
+            <p>Precise to 4 decimal places • BODMAS Compliant</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
